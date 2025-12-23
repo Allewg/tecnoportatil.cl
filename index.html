@@ -37,11 +37,23 @@
                     animation: {
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float-logo': 'floatLogo 6s ease-in-out infinite',
+                        'fade-in-scale': 'fadeInScale 1.2s ease-out forwards',
                     },
                     keyframes: {
                         fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        floatLogo: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg) scale(1)' },
+                            '25%': { transform: 'translateY(-15px) rotate(2deg) scale(1.05)' },
+                            '50%': { transform: 'translateY(-10px) rotate(0deg) scale(1)' },
+                            '75%': { transform: 'translateY(-15px) rotate(-2deg) scale(1.05)' },
+                        },
+                        fadeInScale: {
+                            '0%': { opacity: '0', transform: 'scale(0.8) translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
                         }
                     }
                 }
@@ -56,6 +68,7 @@
         /* Custom Styles */
         body {
             font-family: 'Inter', sans-serif;
+            background: #0f172a;
         }
 
         h1,
@@ -65,6 +78,7 @@
         h5,
         h6 {
             font-family: 'Poppins', sans-serif;
+            letter-spacing: -1px;
         }
 
         .glass-nav {
@@ -120,9 +134,7 @@
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-2 group">
-                    <div class="bg-primary p-2 rounded-lg text-white group-hover:scale-110 transition-transform">
-                        <i class="fas fa-microchip text-xl"></i>
-                    </div>
+                    <img src="logotecno.png" alt="TecnoPortatil" class="h-10 w-auto group-hover:scale-110 transition-transform">
                     <span class="text-2xl font-bold font-heading text-white transition-colors duration-300"
                         id="logo-text">TecnoPortatil</span>
                 </a>
@@ -167,84 +179,89 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero-gradient min-h-screen flex items-center relative pt-20">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="w-full md:w-1/2 text-center md:text-left animate-fade-in-up">
-                    <div
-                        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-blue-300 text-sm font-semibold mb-6 border border-white/10">
-                        <i class="fas fa-shield-alt"></i>
-                        Garantía Extendida en Todo Servicio
-                    </div>
-                    <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-                        Reparamos Tu Tecnología con <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Garantía y
-                            Experiencia</span>
+        <section id="inicio" class="relative min-h-screen flex items-center bg-[#0f172a] overflow-hidden pt-20">
+            <div class="absolute left-1/2 top-0 -translate-x-1/2 w-[90vw] max-w-[900px] h-[320px] md:w-[900px] md:h-[500px] bg-gradient-radial from-blue-700/40 via-transparent to-transparent blur-3xl z-0"></div>
+            <div class="absolute right-0 top-1/3 w-60 h-60 md:w-96 md:h-96 bg-gradient-radial from-purple-700/30 via-transparent to-transparent blur-2xl z-0"></div>
+            <div class="container mx-auto px-4 md:px-6 relative z-10 grid grid-cols-1 md:grid-cols-5 gap-0 items-center min-h-[70vh]">
+                <!-- Columna Izquierda: Texto -->
+                <div class="md:col-span-3 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                                        <!-- Logo centrado solo en móvil -->
+                                        <div class="block md:hidden mb-4 w-full flex justify-center">
+                                            <img src="logotecno.png" alt="TecnoPortatil Logo" class="w-20 h-20 xs:w-24 xs:h-24 object-contain drop-shadow-xl rounded-2xl bg-white/5 p-2" style="max-width:96px;max-height:96px;" />
+                                        </div>
+                    <h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-5 tracking-tight text-white">
+                        Servicio Técnico <span class="block md:inline"></span>
+                        <span class="text-white">Garantía</span>
+                        <span class="text-white"> y </span>
+                        <span class="text-white">Experiencia</span>
                     </h1>
-                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-lg mx-auto md:mx-0">
-                        Servicio técnico especializado para todas tus marcas favoritas. Recupera la vida de tus
-                        dispositivos hoy mismo.
+                    <p class="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-md sm:max-w-xl md:max-w-2xl leading-relaxed">
+                        Servicio especializado en notebooks, celulares y más. <span class="text-primary font-semibold">Recupera la vida de tus dispositivos con confianza y rapidez.</span>
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center items-center md:justify-start md:items-start">
                         <a href="#contacto"
-                            class="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2">
+                            class="bg-primary hover:brightness-125 text-white px-8 py-4 rounded-full font-extrabold text-base xs:text-lg transition-all shadow-xl flex items-center gap-3 tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-400/60 w-full sm:w-auto justify-center">
                             Solicitar Diagnóstico
-                            <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-arrow-right text-xl"></i>
                         </a>
                         <a href="#servicios"
-                            class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2">
+                            class="border border-blue-400/60 text-blue-200 hover:bg-blue-400/10 px-8 py-4 rounded-full font-extrabold text-base xs:text-lg transition-all flex items-center gap-3 tracking-wide bg-transparent backdrop-blur-sm w-full sm:w-auto justify-center">
                             Ver Servicios
                         </a>
                     </div>
-
-                    <div
-                        class="mt-12 flex items-center justify-center md:justify-start gap-8 text-gray-400 text-sm font-medium">
+                    <div class="mt-10 flex flex-col xs:flex-row items-center justify-center md:justify-start gap-4 xs:gap-8 text-gray-400 text-sm xs:text-base font-medium w-full">
                         <div class="flex items-center gap-2">
                             <i class="fas fa-check-circle text-success"></i>
-                            <span>Técnicos Certificados</span>
+                            <span class="font-semibold text-white/90">Técnicos Certificados</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="fas fa-check-circle text-success"></i>
-                            <span>+5000 Reparaciones</span>
+                            <span class="font-semibold text-white/90">+5000 Reparaciones</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="w-full md:w-1/2 relative hidden md:block">
-                    <!-- Abstract Tech Visual -->
-                    <div class="relative w-full aspect-square max-w-lg mx-auto">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-purple-500/20 rounded-full blur-3xl animate-pulse-slow">
-                        </div>
+                <!-- Columna Derecha: Imagen Hero -->
+                <div class="md:col-span-2 flex justify-center items-center relative mt-10 md:mt-0">
+                    <div class="relative w-full max-w-[120px] xs:max-w-[150px] sm:max-w-md aspect-[4/5] flex items-center justify-center md:max-w-md md:aspect-[4/5]">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-20 xs:w-28 xs:h-28 sm:w-32 sm:h-32 bg-gradient-radial from-blue-500/30 via-transparent to-transparent blur-2xl z-0"></div>
                         <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Reparación de tecnología"
-                            class="relative z-10 rounded-2xl shadow-2xl border border-white/10 transform rotate-3 hover:rotate-0 transition-all duration-500 object-cover h-full w-full">
-
-                        <!-- Floating Cards -->
-                        <div class="absolute -bottom-6 -left-6 bg-dark/80 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl z-20 animate-bounce"
-                            style="animation-duration: 3s;">
-                            <div class="flex items-center gap-3">
-                                <div class="bg-success/20 p-2 rounded-lg">
-                                    <i class="fas fa-clock text-success text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="text-white font-bold">Rápido</p>
-                                    <p class="text-xs text-gray-400">Entrega Express</p>
-                                </div>
-                            </div>
+                            alt="Laptop reparada"
+                            class="relative z-10 rounded-2xl sm:rounded-3xl shadow-2xl border border-white/10 object-cover w-full h-full mask-image-hero">
+                        <!-- Elementos flotantes 3D adaptados a móvil -->
+                        <div class="absolute -right-2 top-1/4 w-4 h-4 xs:w-6 xs:h-6 sm:w-16 sm:h-16 bg-cyan-400/30 rounded-full blur-xl z-20"></div>
+                        <div class="absolute -left-2 bottom-1/4 w-3 h-3 xs:w-4 xs:h-4 sm:w-12 sm:h-12 bg-purple-400/30 rounded-full blur-lg z-20"></div>
+                        <div class="absolute right-1/3 bottom-0 w-2.5 h-2.5 xs:w-4 xs:h-4 sm:w-10 sm:h-10 bg-blue-400/20 rounded-full blur-md z-20"></div>
+                        <div class="absolute left-1/3 top-0 w-2 h-2 xs:w-3 xs:h-3 sm:w-8 sm:h-8 bg-white/10 rounded-full blur-md z-20"></div>
+                        <!-- Icono chip -->
+                        <div class="absolute left-1 top-1 z-30 hidden xs:block">
+                            <i class="fas fa-microchip text-blue-300/80 text-xl xs:text-2xl sm:text-3xl blur-[1px]"></i>
+                        </div>
+                        <!-- Icono tuerca -->
+                        <div class="absolute right-1 bottom-1 z-30 hidden xs:block">
+                            <i class="fas fa-cog text-purple-300/80 text-lg xs:text-xl sm:text-2xl blur-[1px]"></i>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block z-20">
                 <a href="#servicios" class="text-white/50 hover:text-white transition-colors">
                     <i class="fas fa-chevron-down text-2xl"></i>
                 </a>
             </div>
-        </div>
-    </section>
+            <style>
+                .mask-image-hero {
+                    -webkit-mask-image: linear-gradient(180deg, #fff 80%, transparent 100%);
+                    mask-image: linear-gradient(180deg, #fff 80%, transparent 100%);
+                }
+                @media (max-width: 640px) {
+                    .mask-image-hero {
+                        -webkit-mask-image: linear-gradient(180deg, #fff 90%, transparent 100%);
+                        mask-image: linear-gradient(180deg, #fff 90%, transparent 100%);
+                    }
+                }
+            </style>
+        </section>
 
     <!-- Services Section -->
     <section id="servicios" class="py-24 bg-light">
@@ -360,6 +377,11 @@
     <section id="nosotros" class="py-24 bg-white relative overflow-hidden">
         <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-50/50 skew-x-12 transform translate-x-20"></div>
         <div class="container mx-auto px-6 relative z-10">
+            <!-- Fondo decorativo extra para profesionalismo -->
+            <div class="absolute inset-0 pointer-events-none z-0">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] bg-gradient-to-br from-blue-500/20 via-cyan-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tr from-primary/10 to-cyan-400/10 rounded-full blur-2xl"></div>
+            </div>
             <div class="flex flex-col lg:flex-row gap-16 items-center">
                 <div class="w-full lg:w-1/2 scroll-hidden">
                     <span class="text-primary font-bold tracking-wider uppercase text-sm">Por Qué Elegirnos</span>
@@ -374,8 +396,8 @@
                                 <i class="fas fa-search text-primary text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-dark">Diagnóstico Gratuito</h4>
-                                <p class="text-sm text-gray-500">Evaluamos tu equipo sin costo alguno.</p>
+                                <h4 class="font-bold text-dark">Diagnóstico con Costo</h4>
+                                <p class="text-sm text-gray-500">El diagnóstico tiene un valor que se descuenta si reparas con nosotros.</p>
                             </div>
                         </div>
                         <div class="flex gap-4">
@@ -401,8 +423,8 @@
                                 <i class="fas fa-bolt text-primary text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-dark">Reparación Rápida</h4>
-                                <p class="text-sm text-gray-500">Tiempos de entrega optimizados.</p>
+                                <h4 class="font-bold text-dark">Reparación Garantizada</h4>
+                                <p class="text-sm text-gray-500">Todas nuestras reparaciones cuentan con garantía real.</p>
                             </div>
                         </div>
                     </div>
@@ -610,9 +632,7 @@
                 <!-- Col 1 -->
                 <div>
                     <div class="flex items-center gap-2 mb-6">
-                        <div class="bg-primary p-2 rounded-lg text-white">
-                            <i class="fas fa-microchip"></i>
-                        </div>
+                        <img src="logotecno.png" alt="TecnoPortatil" class="h-8 w-auto">
                         <span class="text-xl font-bold font-heading">TecnoPortatil</span>
                     </div>
                     <p class="text-gray-400 mb-6">Tu tecnología en buenas manos. Servicio técnico profesional
@@ -646,7 +666,7 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-envelope text-primary"></i>
-                            contacto@tecnoportatil.cl
+                        tecnoportatilchile@gmail.com
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-map-marker-alt text-primary"></i>
